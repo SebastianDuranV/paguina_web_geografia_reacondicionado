@@ -1,0 +1,51 @@
+{% extends "layout_user.html" %}
+{% block content %}
+
+{% from "_marco.html" import render_field %}
+<header class="masthead">
+<form  action="/createPost/{{typeEng}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      <h2 class="text-white" >Crear {{type}} </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(post.title, class="form-control" , placeholder="Titulo" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(post.image, class="form-control" , placeholder="Imagen" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(post.subtitle, class="form-control", placeholder="Subtitulo")}}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <td> Cuerpo
+          <textarea type="text" rows="5" class="form-control" name="Article" placeholder="Cuerpo" id="Article" required data-validation-required-message="Please enter a message."></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        {% if type == 'blog' %}
+        <div class="form-group floating-label-form-group controls">
+        <td> Categoría
+          <select class="form-control" placeholder="catergory" id="catergory" name="catergory">
+            {%for i in category%}
+              <option value="{{i.0}}">{{i.1}} </option>
+           {%endfor%} 
+         </select>
+        </div>
+        <br>
+        {% endif %}
+        <div class="form-group floating-label-form-group controls">
+          <label> Subir archivos </label>
+          <input type=file multiple name="files" class="btn btn-danger">
+        </div>
+      <br>
+      </div>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Guardar</button>
+      </div>
+    </div>
+</form>
+</header>
+{% endblock %}

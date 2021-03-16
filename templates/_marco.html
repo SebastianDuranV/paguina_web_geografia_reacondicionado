@@ -1,0 +1,27 @@
+{% macro render_field(field) %}
+
+    <td style="color:white"> {{ field.label }}
+    <dd style="color:white"> {{ field(**kwargs) |safe}}
+
+    {% if field.errors %}
+            {% for error in field.errors %}
+                <h4 style="color:red"> {{error}}</h4>
+            {% endfor %}
+
+    {% endif %}
+
+{% endmacro%}
+
+{% macro render_field(field) %}
+
+    <td style="color:white"> {{ field.label }}
+    <dd style="color:white"> {{ field(**kwargs) |safe}}
+
+    {% if field.errors %}
+            {% for error in field.errors %}
+                <h4 style="color:red"> {{error}}</h4>
+            {% endfor %}
+
+    {% endif %}
+
+{% endmacro%}

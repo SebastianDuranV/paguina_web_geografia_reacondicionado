@@ -1,0 +1,21 @@
+{% extends "layout_user.html" %}
+{% block content %}
+
+
+{% from "_marco.html" import render_field %}
+<form  action="/createCategory" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      <h2 class="text-white" >Create category </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(cat.name, class="form-control" , placeholder="Nombre de categoría" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Save</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

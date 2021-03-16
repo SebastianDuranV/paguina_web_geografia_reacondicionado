@@ -1,0 +1,41 @@
+{% extends "layout_user.html" %}
+{% block content %}
+<form  action="/updateUserPerfil" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p style="color: red">{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <h2 class="text-white" >Create user </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Nombres</label>
+          <input type="text"  value= "{{user.username}}" class="form-control" name="username" placeholder="Nombres" id="username" required data-validation-required-message="Please enter your username.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Apellidos</label>
+          <input type="text"  value= "{{user.lastname}}" class="form-control" name="lastname" placeholder="Apellidos" id="lastname" required data-validation-required-message="Please enter your username.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Email</label>
+          <input type="text" value= "{{user.email}}" class="form-control" name="email" placeholder="email" id="email" required data-validation-required-message="Please enter your email.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Contraseña</label>
+          <input type="password"  value= "{{user.password}}" class="form-control" name="password" placeholder="Contraseña" id="password" required data-validation-required-message="Please enter your username.">
+          <p class="help-block text-danger"></p>
+        </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Guardar</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

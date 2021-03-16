@@ -1,0 +1,51 @@
+{% extends "layout_user.html" %}
+{% block content %}
+<form  action="/updatePost/{{type}}/{{id}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p style="color: red">{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <h2 class="text-white" >Actualizar / Editar</h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Título</label>
+          <input type="text" value= "{{post.title}}" class="form-control" name="title" placeholder="title" id="title" required data-validation-required-message="Please enter title.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Subtitulo</label>
+          <input type="text" value= "{{post.subtitle}}" class="form-control" name="subtitle" placeholder="subtitle" id="subtitle" required data-validation-required-message="Please enter subtitle.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Imagen</label>
+          <input type="text" value= "{{post.image}}" class="form-control" name="image" placeholder="image" id="image" required data-validation-required-message="Please enter subtitle.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Cuerpo</label>
+          <input type="text" value= "{{post.body}}" class="form-control" name="body" placeholder="body" id="body" required data-validation-required-message="Please enter your body.">
+          <p class="help-block text-danger"></p>
+        </div>
+        {% if type=='Blog' %}
+        <div class="form-group floating-label-form-group controls">
+            <label style="color:white" >Categoría</label>
+            <input type="text" value= "{{post.idpostegory}}" class="form-control" name="idpostegory" placeholder="idpostegory" id="idpostegory" required data-validation-required-message="Please enter your email.">
+            <p class="help-block text-danger"></p>
+        </div>
+        {% endif %}
+        <div class="form-group floating-label-form-group controls">
+          <input type=file multiple name=charts>
+        </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Guardar</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

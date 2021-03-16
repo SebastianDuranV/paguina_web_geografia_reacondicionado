@@ -1,0 +1,14 @@
+{% extends "layout_user.html" %}
+{% block content %}
+
+<h1>Bienvenido</h1>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+  <h2 style="color: red">{{message}}</h2>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}

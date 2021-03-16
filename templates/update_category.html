@@ -1,0 +1,26 @@
+{% extends "layout_user.html" %}
+{% block content %}
+<form  action="/updateCategory/{{id}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p style="color: red">{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <h2 class="text-white" >Create category </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Name</label>
+          <input type="text" value= "{{cat.name}}" class="form-control" name="name" placeholder="name" id="name" required data-validation-required-message="Please enter name.">
+          <p class="help-block text-danger"></p>
+        </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Save</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

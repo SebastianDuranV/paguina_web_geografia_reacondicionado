@@ -1,0 +1,18 @@
+pip install flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
+pip3 install flask_sqlalchemy==2.1
+https://stackoverflow.com/questions/62436786/attributeerror-module-time-has-no-attribute-clock-in-sqlalchemy-python-3-8
+https://docs.sqlalchemy.org/en/13/orm/basic_relationships.html
+
+
+  cabin_db:
+    image: mysql:latest
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testFlask
+      MYSQL_USER: root@localhost
+      MYSQL_PASSWORD: password

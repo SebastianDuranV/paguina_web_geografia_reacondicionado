@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% from "_marco.html" import render_field %}
+<form name="New news" action="/createUser" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      <h2 class="text-white" >Creación de usuario </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(user.name, class="form-control" , placeholder="Nombres" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(user.lastname, class="form-control" , placeholder="Apellidos" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(user.email, class="form-control" , placeholder="Email" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          {{ render_field(user.password, class="form-control" , placeholder="Contraseña", type="password" ) }}
+          <p class="help-block text-danger"></p>
+        </div>
+        
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Save</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

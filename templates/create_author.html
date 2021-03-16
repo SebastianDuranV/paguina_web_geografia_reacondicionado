@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form name="New author" action="/createUser" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+      <h2 class="text-white" >Crear autor </h2>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Nombre de autor</label>
+          <input type="text" class="form-control" name="name" placeholder="name" id="name" required data-validation-required-message="Please enter your name.">
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group floating-label-form-group controls">
+          <label style="color:white" >Email</label>
+          <input type="text" class="form-control" name="email" placeholder="email" id="email" required data-validation-required-message="Please enter your email.">
+          <p class="help-block text-danger"></p>
+        </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Save</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

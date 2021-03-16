@@ -1,0 +1,83 @@
+{% extends "layout_user.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <h3 class="color: rgb(0,0,0)"> {{type}}</h3>
+
+{% if type == "User"%}
+<table class="table">
+    <thead>
+        <tr class="table-success">
+            <th scope="col">id</th>
+            <th scope="col">Username</th>
+            <th scope="col">email</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in objects %}
+    <tr class="table-primary">
+        <th scope="row">{{ i.id }}</th>
+        <td>{{ i.username }}</td>
+        <td>{{ i.email }}</td>
+        <td><a role="button" class="btn btn-primary" href="/user/{{i.username}}">Go</a> <a role="button" class="btn btn-info" href="/updateUser/{{i.username}}">Update</a> <a role="button" class="btn btn-danger"   href="/deleteUser/{{i.username}}">Delete</a></td>
+    </tr>
+    {%endfor%} 
+   </tbody>
+</table>
+{% endif %}
+
+
+{% if type != "Category" and type != "User"%}
+<table class="table">
+    <thead>
+        <tr class="table-success">
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">date</th>
+            {% if type == "Blog" %}
+            <th scope="col">category</th>
+            {% endif %}
+            <th scope="col">user</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    {% for i in objects %}
+    <tr class="table-primary">
+        <th scope="row">{{ i.id }}</th>
+        <td>{{ i.title }}</td>
+        <td>{{ i.pub_date }}</td>
+        {% if type == "Blog" %}
+        <td>{{ i.category }}</td>
+        {% endif %}
+        <td>{{ i.user }}</td>
+        <td><a role="button" class="btn btn-primary" href="/post/{{type}}/{{i.id}}">Go</a> <a role="button" class="btn btn-info" href="/updatePost/{{type}}/{{i.id}}">Update</a> <a role="button" class="btn btn-danger" href="/deletePost/{{type}}/{{i.id}}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+
+{% if type == "Category"%}
+<table class="table">
+    <thead>
+        <tr class="table-success">
+            <th scope="col">id</th>
+            <th scope="col">Name category</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    {% for i in objects %}
+    <tr class="table-primary">
+        <th scope="row">{{ i.id }}</th>
+        <td>{{ i.name }}</td>
+        <td> <a role="button" class="btn btn-info" href="/updateCategory/{{i.id}}">Update</a> <a role="button" class="btn btn-danger"  href="/deleteCategory/{{i.id}}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</div>
+</div>
+{% endblock %}
