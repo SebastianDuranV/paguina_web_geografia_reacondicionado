@@ -4,8 +4,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1996duranrugby@localhost/SebastianDuranVi$geografia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1996duranrugby@localhost/SebastianDuranVi$default'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 

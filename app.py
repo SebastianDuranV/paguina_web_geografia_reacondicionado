@@ -24,9 +24,10 @@ def index():
     try:
         if session['idUser']:
             user = User.query.filter_by(id=session['idUser'])
-            if user.isSuperUser:
-                return render_template('index_user.html', isSuper = 1)
             return render_template('index_user.html', isSuper = 0)
+            #if user.isSuperUser:
+            #    return render_template('index_user.html', isSuper = 1)
+            #return render_template('index_user.html', isSuper = 0)
     except:
         return render_template("index.html")
 
@@ -216,10 +217,11 @@ def getList():
     getObject = request.args.get('type','<h1> No type declarated </h1>')
     try:
         user = User.query.filter_by(id=session['idUser'])
-        if user.isSuperUser == 0:
-            allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
-        else:
-            allObject = TipeClass[getObject].query.all()
+        allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
+        #if user.isSuperUser == 0:
+        #    allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
+        #else:
+        #    allObject = TipeClass[getObject].query.all()
     except:
         return '<h1> No found type </h1>'
 
@@ -323,8 +325,8 @@ def single():
 
 
 
-#if __name__=='__main__':
-#    app.run(host= '0.0.0.0',debug=True)
+if __name__=='__main__':
+    app.run(host= '0.0.0.0',debug=True)
 
 
 
